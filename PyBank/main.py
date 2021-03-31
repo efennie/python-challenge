@@ -1,7 +1,23 @@
 #import the csv file and read it
+import os
+import csv
 
+csvpath = os.path.join('PyBank','Resources','Python_PyBank_Resources_budget_data.csv')
+
+with open(csvpath) as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
+
+#define and print headers
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
+
+    for row in csvreader:
+        print(row)
+    
 #total count of column 0 to get total # of months in the set
     #store as variable "total_months"
+
+
 
 #sum of column 2 to get the net total profits/losses
     #store as variable "total_p_l"
