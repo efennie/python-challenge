@@ -31,7 +31,6 @@ with open(csvpath) as csvfile:
        previous_row = int(row[1])
        change_list.append(change)
        month_money_list.append(row[0])
-
        
 #get the initial value out
     change_list.pop(0)
@@ -67,7 +66,6 @@ print("Total: " + str(total_p_l))
 print("Average Change: $" + str(net_monthly_avg))
 print("Greatest Increase in Profits: $" + str(max_gains) + " during " + str(last_max))
 print("Greatest Decrease in Profits: $" + str(min_loss) + " during " + str(last_min))
-
 
 #export report as txt file
 output_path = os.path.join('PyBank', 'analysis', 'analysis.txt')
