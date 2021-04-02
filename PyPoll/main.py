@@ -2,6 +2,7 @@
 import os
 import csv
 
+#create initial variables/sets
 votes_cast = 0
 all_candidates = set()
 votes_for_khan = 0
