@@ -68,15 +68,17 @@ print("Average Change: $" + str(net_monthly_avg))
 print("Greatest Increase in Profits: $" + str(max_gains) + " during " + str(last_max))
 print("Greatest Decrease in Profits: $" + str(min_loss) + " during " + str(last_min))
 
+
 #export report as txt file
-output_path = os.path.join('PyBank', 'analysis.txt')
+output_path = os.path.join('PyBank', 'analysis', 'analysis.txt')
 
-open(output_path, "w")
+with open(output_path, "w") as output_file:
     
-
-#the file= report will export each print line
-print("Total Months: " + str(total_months), file=output_path)
-print("Total: " + str(total_p_l), file=output_path)
-print("Average Change: $" + str(net_monthly_avg), file=output_path)
-print("Greatest Increase in Profits: $" + str(max_gains) + " during " + str(last_max), file=output_path)
-print("Greatest Decrease in Profits: $" + str(min_loss) + " during " + str(last_min), file=output_path)
+    output_str = (
+        f"Total Months: {total_months}\n"
+        f"Total: {total_p_l}\n"
+        f"Average Change: ${net_monthly_avg}\n"
+        f"Greatest Increase in Profits: ${max_gains} {last_max}\n"
+        f"Greatest Decrease in Profits: ${min_loss} during {last_min}\n"
+    )
+    output_file.write(output_str)
