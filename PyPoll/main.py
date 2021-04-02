@@ -8,7 +8,6 @@ votes_for_khan = 0
 votes_for_correy = 0  
 votes_for_otooley = 0
 votes_for_li = 0
-compare_votes = []
 
 #create path and import csv file and read the file
 csvpath = os.path.join('PyPoll', 'Resources', 'Python_PyPoll_Resources_election_data.csv')
@@ -64,16 +63,40 @@ votes_correy_percent = "{:.0%}".format(votes_correy_dec)
 
 #determine the winner of the election based on popular vote 
 # & print "Winner: " + their name
-#compare_votes.append(votes_for_correy)
-#print(compare_votes)
 
-print("Election Results:")
-print("---------------------")
-print(f"Khan: {votes_khan_percent} ({votes_for_khan})")
-print(f"Correy: {votes_correy_percent} ({votes_for_correy})")
-print(f"Li: {votes_li_percent} ({votes_for_li})")
-print(f"O'Tooley: {votes_otooley_percent} ({votes_for_otooley})")
-print("---------------------")
-print(f"Total votes cast: {votes_cast}")
-print("---------------------")
-#print(f"Winner: {}")
+compare_votes_list = [votes_for_correy, votes_for_li, votes_for_khan, votes_for_otooley]
+compare_votes_list
+#print(compare_votes_list)
+pop_vote = max(compare_votes_list)
+
+if pop_vote == votes_for_correy:
+    winner = "Correy"
+
+elif pop_vote == votes_for_khan:
+    winner = "Khan"
+
+elif pop_vote == votes_for_li:
+    winner = "Li"
+
+else:
+    winner = "O'Tooley"
+    
+#export results to a text file
+
+output_path = os.path.join('PyPoll', 'analysis', 'analysis.txt')
+
+with open(output_path, "w") as output_file:
+    
+    output_str = (
+        f"Election Results:\n"
+        f"---------------------\n"
+        f"Khan: {votes_khan_percent} ({votes_for_khan})\n"
+        f"Correy: {votes_correy_percent} ({votes_for_correy})\n"
+        f"Li: {votes_li_percent} ({votes_for_li})\n"
+        f"O'Tooley: {votes_otooley_percent} ({votes_for_otooley})\n"
+        f"---------------------\n"
+        f"Total votes cast: {votes_cast}\n"
+        f"---------------------\n"
+        f"Winner: {winner}\n"
+    )
+    output_file.write(output_str)
